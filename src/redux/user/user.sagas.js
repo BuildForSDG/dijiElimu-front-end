@@ -1,34 +1,35 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import {userActionTypes} from  './user.type';
 import axios from 'axios';
-import { signUpStudentStart, signUpStudentFailure, signUpStudentSuccess, signInStudentSuccess, signInStudentFailure } from './user.actions';
+import { signUpStudentFailure, signUpStudentSuccess, signInStudentSuccess, signInStudentFailure } from './user.actions';
 
 //sign-up student 
-export function* signUpStudentAsync ({payload}) {
-    const {userData }= payload
+export function* signUpStudentWorker (action) {
+   console.log(action)
+   const { payload } = action
     try {
-        const user = yield axios.post('https://www.dijielimu.com/users/signup', userData);
-        yield put(signUpStudentSuccess(user));
+        const user = yield axios.post('https://www.dijielimu.com/users/signup', payload);
+        yield put(call(signUpStudentSuccess,user));
     } catch (error) {
-        yield put(call(signUpStudentFailure(error.message)));
+        yield put(call(signUpStudentFailure,error.message));
     };
 };
 
 export function * onSignUpStudentStart () {
-    yield takeEvery(userActionTypes.SIGN_UP_STUDENT_START, signUpStudentAsync);
+    yield takeEvery(userActionTypes.SIGN_UP_STUDENT_START, signUpStudentWorker);
 };
 
 // sign in student
-export function* signInStudentAsync ({userData}) {
-
+export function* signInStudentWorker(action) {
+    const { payload } = action
     try {
-        const user = yield axios.post('https://www.dijielimu.com/users/signin', userData);
-        yield put(signInStudentSuccess(user));
+        const user = yield axios.post('https://www.dijielimu.com/users/signin', payload);
+        yield put(call(signInStudentSuccess,user));
     } catch (error) {
-        yield put(call(signInStudentFailure(error.message)));
+        yield put(call(signInStudentFailure, error.message));
     };
 };
 
-export function * signInStudentStart () {
-    yield takeEvery(userActionTypes.SIGN_IN_STUDENT_START, signInStudentAsync);
+export function * onSignInStudentStart () {
+    yield takeEvery(userActionTypes.SIGN_IN_STUDENT_START, signInStudentWorker);
 };

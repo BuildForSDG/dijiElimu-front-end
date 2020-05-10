@@ -1,18 +1,14 @@
-import{  all } from 'redux-saga/effects';
+import{  all, call } from 'redux-saga/effects';
 import {
     onSignUpStudentStart,
-    signInStudentAsync,
-    signInStudentStart,
-    signUpStudentAsync
+    onSignInStudentStart
 } from './user/user.sagas';
 
 
 function* rootSaga () {
     yield all([
-        onSignUpStudentStart(),
-        signInStudentAsync(),
-        signInStudentStart(),
-        signUpStudentAsync()
+        call(onSignUpStudentStart),
+        call(onSignInStudentStart)
     ])
 }
 

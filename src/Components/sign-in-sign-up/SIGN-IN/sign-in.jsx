@@ -39,7 +39,7 @@ const SignIn = (props)=>{
 }
 
 const mapDispatchToProps =dispatch => ({
-    signInStudentStart: ()=>dispatch(signInStudentStart()),    
+    signInStudentStart: (signInData)=>dispatch(signInStudentStart(signInData)),    
 });
 
 
