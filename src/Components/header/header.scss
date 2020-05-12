@@ -1,0 +1,52 @@
+.nav{
+    background-color:  rgb(248, 248, 248);
+    padding: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: balck solid 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & a{
+        text-decoration: none;
+        color: black
+    }
+}
+.nav ul{
+    list-style: none;
+    display: flex;
+    li{
+        text-decoration: none;
+        margin-right: 2rem;
+        color: black;
+    }
+    a{
+        text-decoration: none;
+        color: white;
+       
+    }
+}
+.header-option{
+    &:hover{
+        cursor: pointer;
+    }
+}
+.profile{
+    width: 250px;
+    height: 350px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    position: absolute;
+    top: 0px;
+    right: 65px;
+    z-index: 1;
+    background-color: white;
+    .cart-is-empty-title{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: normal;
+        font-size: 1rem;
+        text-align: center;
+    }
+}

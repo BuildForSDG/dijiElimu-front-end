@@ -1,35 +1,38 @@
-import { takeEvery, put, call } from 'redux-saga/effects';
-import {userActionTypes} from  './user.type';
+import {
+  takeEvery, put, call, takeLatest
+} from 'redux-saga/effects';
 import axios from 'axios';
-import { signUpStudentFailure, signUpStudentSuccess, signInStudentSuccess, signInStudentFailure } from './user.actions';
+import userActionTypes from './user.type';
+import {
+  signUpStudentFailure, signUpStudentSuccess, signInStudentSuccess, signInStudentFailure
+} from './user.actions';
 
-//sign-up student 
-export function* signUpStudentWorker (action) {
-   console.log(action)
-   const { payload } = action
-    try {
-        const user = yield axios.post('https://www.dijielimu.com/users/signup', payload);
-        yield put(call(signUpStudentSuccess,user));
-    } catch (error) {
-        yield put(call(signUpStudentFailure,error.message));
-    };
-};
+// sign-up student
+export function* signUpStudentWorker(action) {
+  const { payload } = action;
+  try {
+    const user = yield axios.post('https://www.dijielimu.com/users/signup', payload);
+    yield put(call(signUpStudentSuccess, user));
+  } catch (error) {
+    yield put(call(signUpStudentFailure, error.message));
+  }
+}
 
-export function * onSignUpStudentStart () {
-    yield takeEvery(userActionTypes.SIGN_UP_STUDENT_START, signUpStudentWorker);
-};
+export function* onSignUpStudentStart() {
+  yield takeLatest(userActionTypes.SIGN_UP_USER_START, signUpStudentWorker);
+}
 
 // sign in student
 export function* signInStudentWorker(action) {
-    const { payload } = action
-    try {
-        const user = yield axios.post('https://www.dijielimu.com/users/signin', payload);
-        yield put(call(signInStudentSuccess,user));
-    } catch (error) {
-        yield put(call(signInStudentFailure, error.message));
-    };
-};
+  const { payload } = action;
+  try {
+    const user = yield axios.post('https://www.dijielimu.com/users/signin', payload);
+    yield put(call(signInStudentSuccess, user));
+  } catch (error) {
+    yield put(call(signInStudentFailure, error.message));
+  }
+}
 
-export function * onSignInStudentStart () {
-    yield takeEvery(userActionTypes.SIGN_IN_STUDENT_START, signInStudentWorker);
-};
+export function* onSignInStudentStart() {
+  yield takeEvery(userActionTypes.SIGN_IN_USER_START, signInStudentWorker);
+}
