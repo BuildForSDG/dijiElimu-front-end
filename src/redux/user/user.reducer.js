@@ -1,5 +1,4 @@
 import userActionTypes from './user.type';
-import { selectProfileHidden } from './user-selectors';
 
 const INITIAL_STATE = {
   currentUser: null,
@@ -35,7 +34,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
 
       return {
         ...state,
-        profileHidden: !selectProfileHidden
+        profileHidden: !state.profileHidden
       };
     default:
       return state;
