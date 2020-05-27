@@ -1,16 +1,26 @@
 import React from 'react';
-import {Route, } from 'react-router-dom'
-import './App.css';
+import {Route, Switch} from 'react-router-dom'
+import './App.scss';
 import SignInSignUp from './Components/sign-in-sign-up/sign-in-sign-up';
 import Header from './Components/header/header';
-import HomePage from './Pages/homepage/homepage'
+import Landing from './Pages/landing/landing'
+import Profile from './Components/profile.component.jsx/profile.component';
+import Directory from './Components/directory/directory.component';
+import FullDepartment from './Components/full-department/FullDepartment'
+import CourseRouter from './Components/course/course-router';
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <Route component={HomePage} path={`/`} exact={true}/>
+      <Switch>
+      <Route component={Landing} path={`/`} exact={true}/>
+      <Route component={Directory} path={`/departments`} exact={true}/>
       <Route component={SignInSignUp} path={`/signup`}/>  
+      <Route component={Profile} path={`/profile`}/> 
+      <Route component={FullDepartment} path={`/departments/:departmentCode`}/>
+      <Route component={CourseRouter} path={`/course/:courseCode`}/>
+      </Switch>
     </div>
   );
 }

@@ -1,9 +1,15 @@
-.sign-in-form{
-    width: 400px;
-    width: 400px;
-    margin: 1rem 1rem
+.sign-in-form {
+  margin: 1rem;
+  width: 500px;
 }
-.buttons{
-    display: flex;
-    justify-content: space-between;
+@media (max-width: 768px) {
+  .sign-in-form {
+    margin: 1rem;
+    width: 80%;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
 }

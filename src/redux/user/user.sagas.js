@@ -1,5 +1,5 @@
 import {
-  takeEvery, put, call, takeLatest
+  takeEvery, put, call, takeLatest, all
 } from 'redux-saga/effects';
 import axios from 'axios';
 import userActionTypes from './user.type';
@@ -35,4 +35,11 @@ export function* signInStudentWorker(action) {
 
 export function* onSignInStudentStart() {
   yield takeEvery(userActionTypes.SIGN_IN_USER_START, signInStudentWorker);
+}
+
+export function* userSagas() {
+  yield all([
+    call(onSignUpStudentStart),
+    call(onSignInStudentStart)
+  ]);
 }

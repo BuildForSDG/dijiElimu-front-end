@@ -1,0 +1,52 @@
+.collection-item {
+  height: 400px;
+  margin: 1rem;
+  margin: auto;
+  width: 250px;
+}
+
+.background {
+  background-color: rgb(32, 16, 36);
+  background-position: center;
+  background-size: cover;
+  height: 80%;
+  position: relative;
+  width: 100%;
+}
+
+.collection-item-tag {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin-left: 0;
+}
+
+
+
+.item-button {
+  background-color: red($color: #f8fafa);
+  color: rgb(0, 0, 0);
+  left: 50%;
+  opacity: 0.5;
+  padding: 0.5rem;
+  position: absolute;
+  top: 80%;
+  transform: translate(-50%, -50%);
+
+  &:hover {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+  }
+}
+
+.parent {
+  position: relative;
+}
+
+.child {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

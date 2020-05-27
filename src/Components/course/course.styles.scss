@@ -1,0 +1,12 @@
+.course-links {
+  display: flex;
+  flex-direction: column;
+  
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

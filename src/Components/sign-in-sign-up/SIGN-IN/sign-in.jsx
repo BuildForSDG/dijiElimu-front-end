@@ -29,6 +29,7 @@ const SignIn = (props) => {
 
 
   return (<form className='sign-in-form'>
+            <h3>Already have an account? Sign In Below</h3>
             <FormInput type='email' required name='email' value={email} handleChange={handleChange} label='email'/>
             <FormInput type='password' required name='password' value={password} handleChange={handleChange} label='password'/>
             <div className='buttons'>

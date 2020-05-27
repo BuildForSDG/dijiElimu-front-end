@@ -1,7 +1,11 @@
-.sign-up-wrapper{
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: space-evenly;
-    
+.sign-up-wrapper {
+  display: flex;
+  flex-direction: row;   
+}
+@media (max-width: 768px) {
+  .sign-up-wrapper {
+    display: flex;
+    flex-direction: column;   
+  }
 }
 

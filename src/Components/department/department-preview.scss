@@ -1,0 +1,23 @@
+.department {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .department {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+  }
+}
+@media (max-width: 380px) {
+  .department {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

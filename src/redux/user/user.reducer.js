@@ -1,8 +1,8 @@
 import userActionTypes from './user.type';
-import { selectProfileHidden } from './user-selectors';
+import userData from '../../userData.json';
 
 const INITIAL_STATE = {
-  currentUser: null,
+  currentUser: userData.userData,
   signUpError: '',
   signInError: '',
   profileHidden: true
@@ -20,7 +20,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         signInError: action.payload
       };
-    case userActionTypes.SIGN_UP_USER_FILURE:
+    case userActionTypes.SIGN_UP_USER_FAILURE:
       return {
         ...state,
         signUpError: action.payload
@@ -31,11 +31,10 @@ const userReducer = (state = INITIAL_STATE, action) => {
         currentUser: null
       };
     case userActionTypes.TOGGLE_PROFILE_HIDDEN:
-      console.log(sele);
 
       return {
         ...state,
-        profileHidden: !selectProfileHidden
+        profileHidden: !state.profileHidden
       };
     default:
       return state;

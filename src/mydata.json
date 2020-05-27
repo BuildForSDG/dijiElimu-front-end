@@ -1,0 +1,248 @@
+  
+ {
+     "departments": [
+        {
+            "title":"humanities",
+            "code":"10",
+            "blog": "",
+            "courses": [   
+                {
+                "name": "history",
+                "code": "1001",
+                "approved": "true",
+                "image": "https://picsum.photos/200/300",
+                "blog": "Hundreds of teachers have gone through our system and become qualified teachers of History. Study with us today",
+                "units": [
+                    {
+                        "title":"World war 2",
+                        "code":"100101",
+                        "blog": "",
+                        "videos": [
+                            
+                            {
+                                "title": "Introduction to world war 2",
+                                "code": "10010101",
+                                "videoUrl": "https://www.youtube.com/watch?v=GqPbVuAxWHo"
+                            },
+                            {
+                                "title": "How it started",
+                                "code": "10010102",
+                                "videoUrl": "https://www.youtube.com/watch?v=GqPbVuAxWHo"
+                            },
+                            {
+                                "title": "Key Players",
+                                "code": "10010103",
+                                "videoUrl": "https://www.youtube.com/watch?v=GqPbVuAxWHo"
+                            }
+                        
+                        ],
+                        "pdfs": [
+                            {
+                                "title": "Introduction to world war 2",
+                                "code": "10010111",
+                                "videoUrl": "https://oneworld-publications.com/media/preview_files/9781780745107.pdf"
+                            },
+                            {
+                                "title": "How it started",
+                                "code": "10010112",
+                                "videoUrl": "https://oneworld-publications.com/media/preview_files/9781780745107.pdf"
+                            },
+                            {
+                                "title": "Key Players",
+                                "code": "10010113",
+                                "videoUrl": "https://oneworld-publications.com/media/preview_files/9781780745107.pdf"
+                            }
+                        ]
+                    }
+                ],
+                "unitsPure": [
+                    {
+                        "title":"World war 2",
+                        "code":"100101",
+                        "blog": "orld war was a very serious war that should have never happened. Lorem ipsum doloreum. I f you have ever been to normandy during the battle of quinoa where my grandfather died fighting for us"
+                    },
+                    {
+                        "title":"World war 3",
+                        "code":"100102",
+                        "blog": "orld war was a very serious war that should have never happened. Lorem ipsum doloreum. I f you have ever been to normandy during the battle of quinoa where my grandfather died fighting for us"
+                    },
+                    {
+                        "title":"World war 3",
+                        "code":"100103",
+                        "blog": "orld war was a very serious war that should have never happened. Lorem ipsum doloreum. I f you have ever been to normandy during the battle of quinoa where my grandfather died fighting for us"
+                    },
+                    {
+                        "title":"World war 3",
+                        "code":"100104",
+                        "blog": "orld war was a very serious war that should have never happened. Lorem ipsum doloreum. I f you have ever been to normandy during the battle of quinoa where my grandfather died fighting for us"
+                    }
+                ]
+                },
+                {
+                    "name": "Diploma in Philosophy",
+                    "code": "1002",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of Philosophy. Study with us today"
+                        }
+               
+            ]
+         
+        },
+        {
+            "title":"languages",
+            "code": "11",
+            "courses": [
+                {
+                    "name": "Diploma in english",
+                    "code": "1101",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of English. Study with us today"
+                },
+                {
+                    "name": "Kiswahili",
+                    "code": "1102",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of Kiswahili. Study with us today"
+                },
+                {
+                    "name": "French",
+                    "code": "1103",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of french. Study with us today"
+                     }
+            ]
+        },
+        {
+            "title": "arts",
+            "code": "12",
+            "blog": "",
+            "courses": [
+                {
+                    "name": "music",
+                    "code": "1201",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of music. Study with us today"
+                    
+                },
+                {
+                    "name": "literature",
+                    "code": "1202",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of Literature. Study with us today"
+                }
+            ]
+        },
+        {
+            "title": "business",
+            "code": "13",
+            "blog": "",
+            "courses": [
+                {
+                    "name": "Bachelor in Business Studies",
+                    "code": "1301",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of Business. Study with us today"
+                },
+                {
+                    "name": "Diploma in Commerce",
+                    "code": "1302",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of commerce. Study with us today"
+                },
+                {
+                    "name": "Diploma in Economics",
+                    "code": "1303",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of Business. Study with us today"
+                },
+                {
+                    "name": "Bachelor in accounting",
+                    "code": "1304",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of accounting. Study with us today"
+                }
+
+            ]
+        },
+        {
+            "title": "mathematics",
+            "code": "14",
+            "blog": "",
+            "courses": [
+                {
+                    "name": "Diploma in mathematics",
+                    "code": "1401",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of Math. Study with us today"
+                },
+                {
+                    "name": "Diploma of statistics",
+                    "code": "1402",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of Math. Study with us today"
+                },
+                {
+                    "name": "Diploma of mathematics",
+                    "code": "1403",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of Math. Study with us today"
+                },
+                {
+                    "name": "Diploma in applied mathematics",
+                    "code": "1404",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of Math. Study with us today"
+                }
+            ]
+        },
+        {
+            "title": "computer and technology",
+            "code": "15",
+            "blog": "",
+            "courses": [
+                {
+                    "name": "Bachelor of computer science",
+                    "code": "1501",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of English. Study with us today"
+                },
+                {
+                    "name": "Bachelor in computer technology",
+                    "code": "1502",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of English. Study with us today"
+                },
+                {
+                    "name": "Bachelor in computer science and mathematics",
+                    "code": "1503",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of computer science and mathematics. Study with us today"
+                },
+                {
+                    "name": "Bachelor of Information Technology",
+                    "code": "1504",
+                    "approved": "true",
+                    "image": "https://picsum.photos/200/300",
+                    "blog": "Hundreds of teachers have gone through our system and become qualified teachers of information technology. Study with us today"
+                }
+            ]
+        }
+     ]
+ }

@@ -1,0 +1,67 @@
+{
+    "units": [
+        {
+            "title":"World war 2",
+            "code":"100101",
+            "blog": "",
+            "videos": [
+                
+                {
+                    "title": "Introduction to world war 2",
+                    "code": "10010101",
+                    "videoUrl": "https://www.youtube.com/watch?v=GqPbVuAxWHo"
+                },
+                {
+                    "title": "How it started",
+                    "code": "10010102",
+                    "videoUrl": "https://www.youtube.com/watch?v=GqPbVuAxWHo"
+                },
+                {
+                    "title": "Key Players",
+                    "code": "10010103",
+                    "videoUrl": "https://www.youtube.com/watch?v=GqPbVuAxWHo"
+                }
+            
+            ],
+            "pdfs": [
+                {
+                    "title": "Introduction to world war 2",
+                    "code": "10010111",
+                    "videoUrl": "https://oneworld-publications.com/media/preview_files/9781780745107.pdf"
+                },
+                {
+                    "title": "How it started",
+                    "code": "10010112",
+                    "videoUrl": "https://oneworld-publications.com/media/preview_files/9781780745107.pdf"
+                },
+                {
+                    "title": "Key Players",
+                    "code": "10010113",
+                    "videoUrl": "https://oneworld-publications.com/media/preview_files/9781780745107.pdf"
+                }
+            ]
+        }
+    ],
+    "unitsPure": [
+        {
+            "title":"World war 2",
+            "code":"100101",
+            "blog": "orld war was a very serious war that should have never happened. Lorem ipsum doloreum. I f you have ever been to normandy during the battle of quinoa where my grandfather died fighting for us"
+        },
+        {
+            "title":"World war 3",
+            "code":"100102",
+            "blog": "orld war was a very serious war that should have never happened. Lorem ipsum doloreum. I f you have ever been to normandy during the battle of quinoa where my grandfather died fighting for us"
+        },
+        {
+            "title":"World war 3",
+            "code":"100103",
+            "blog": "orld war was a very serious war that should have never happened. Lorem ipsum doloreum. I f you have ever been to normandy during the battle of quinoa where my grandfather died fighting for us"
+        },
+        {
+            "title":"World war 3",
+            "code":"100104",
+            "blog": "orld war was a very serious war that should have never happened. Lorem ipsum doloreum. I f you have ever been to normandy during the battle of quinoa where my grandfather died fighting for us"
+        }
+    ]
+}

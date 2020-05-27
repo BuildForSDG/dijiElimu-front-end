@@ -1,14 +1,22 @@
 import { all, call } from 'redux-saga/effects';
 import {
-  onSignUpStudentStart,
-  onSignInStudentStart
+  userSagas
 } from './user/user.sagas';
+import { departmentSagas } from './department/department.sagas';
+import { courseSagas } from './course/course-sagas';
+import { unitSagas } from './unit/unit-sagas';
+import { videoSagas } from './video/video-sagas';
+import { pdfSagas } from './pdf/pdf-sagas';
 
 
 function* rootSaga() {
   yield all([
-    call(onSignUpStudentStart),
-    call(onSignInStudentStart)
+    call(userSagas),
+    call(departmentSagas),
+    call(courseSagas),
+    call(unitSagas),
+    call(videoSagas),
+    call(pdfSagas)
   ]);
 }
 
