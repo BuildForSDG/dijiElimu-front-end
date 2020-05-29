@@ -1,0 +1,11 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: scroll;
+  position: absolute;
+  right: 50px;
+  top: 16px;
+  width: 250px;
+  z-index: +5;
+}

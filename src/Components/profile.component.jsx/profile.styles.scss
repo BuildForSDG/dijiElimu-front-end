@@ -1,0 +1,14 @@
+.create-course-toggle {
+  border: #0a9d80 solid 1px;
+  color: rgb(0, 225, 255);
+  padding: 0.5rem;
+
+
+  &:hover {
+    background: #0a9d80;
+    color: black;
+    cursor: pointer;
+    
+  }
+
+}

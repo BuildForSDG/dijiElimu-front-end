@@ -1,0 +1,35 @@
+.btn {
+  border: 1px var(--main-bg-color-1);
+  margin: 1rem;
+  min-width: 165px;
+  padding: 0.5rem;
+
+  &:hover {
+    background-color: #fff;
+    color: --main-typo-color-3;
+    cursor: pointer;
+  }
+
+  &.is-google-sign-in {
+    background-color: #4c8bf5;
+    color: #fff;
+
+  }
+
+  &.is-google-sign-in:hover {
+    background-color: #0f64f2;
+  }
+
+  &.inverted {
+    background-color: var(--main-bg-color-1);
+    color: #fff;
+
+  }
+    
+  &.inverted:hover {
+    background-color: var(--main-bg-color-3);
+    color: --main-typo-color-3;
+  }
+    
+
+}

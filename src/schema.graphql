@@ -1,0 +1,111 @@
+
+type User {
+    firstName: String!
+    secondName: String!
+    email: String @unique
+    id: ID!
+    password: String!
+    department: Department!
+    role: String!
+    courses: [Course!]
+    createAt: String!
+    updatedAt: String!
+    createAt: Date!
+    updatedAt: Date!
+    courses: [CourseSubscription!]
+    units: [UnitSubscription!]
+}
+type Course {
+    name: String! @unique
+    code: ID! @unique
+    approved: Boolean!
+    units:[Unit]
+    createAt: Date!
+    updatedAt: Date!
+    subscriptions: [CourseSubscription!]
+}
+type Detartment{
+    name: String
+    code: ID
+    courses: [courses]
+}
+type Unit {
+    code: ID! @unique
+    course: Course!
+    name: String!
+    tutor: User!
+    subscriptions: [UnitSubscription]
+    videos: [video!]
+    pdfs: [pdf!]
+    createAt: Date!
+    updatedAt: Date!
+}
+type video{
+    code: ID!
+    title: String!
+    url: String!
+    unit: Unit!
+    published: Boolean!
+    createAt: Date!
+    updatedAt: Date!
+}
+type pdf{
+    pdfCode: ID!
+    pdfUrl: String!
+    unit: Unit!
+    published: Boolean!
+    createAt: Date!
+    updatedAt: Date!
+}
+type Payment {
+    method: String!
+    amount: Float!
+    course: Course
+    unit: Unit
+    createAt: Date!
+    updatedAt: Date!
+}
+
+type CourseSubscription{
+    code: ID!
+    course: Course!
+    student: User!
+    payment: Payment!
+    createAt: Date!
+    updatedAt: Date!
+    completed: Boolean!
+    honours: String!
+}
+type UnitSubscription {
+    code: ID
+    unit: Unit!
+    student: User!
+    payment: Payment!
+    take: Int!
+    createAt: Date!
+    updatedAt: Date!
+    completed: Boolean!
+    grade: String
+}
+type UnitTutorage {
+    code: ID
+    unit: Unit!
+    tutor: User!
+    createAt: Date!
+    updatedAt: Date!
+    
+}
+type Department {
+    code: ID
+    title: String
+    courses: [Course!]
+    imageUrl: String!
+    createAt: Date!
+    updatedAt: Date!
+
+}
+
+
+
+
+
