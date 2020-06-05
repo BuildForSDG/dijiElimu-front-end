@@ -3,10 +3,11 @@
   flex-direction: column;
   
   a {
+    display: inline-block;
     text-decoration: none;
 
     &:hover {
-      text-decoration: underline;
+      color: rgb(78, 179, 247);
     }
   }
 }

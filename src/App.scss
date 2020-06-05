@@ -3,6 +3,16 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.app {
+  min-height: 100vh;
+  position: relative;
+}
+
+.body {
+  min-height: 70vh;
+  overflow-y: scroll;
+}
+
 :root {
   --main-bg-color-1: #004c3d;
   --main-bg-color-2: #006753;
@@ -13,6 +23,13 @@
   --main-typo-color-2: #ba7e59;
   --main-typo-color-3: #d81e1e;
   font-family: 'Roboto', sans-serif;
+
+  button,
+  input[type='submit'],
+  input[type='reset'] {
+    cursor: pointer;
+    outline: inherit;
+  }
 }
 
 a {
@@ -29,4 +46,8 @@ a {
 
 .pr {
   padding-right: 5px;
+}
+
+.mt1 {
+  margin-top: 10px;
 }

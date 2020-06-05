@@ -8,19 +8,27 @@ import Profile from './Components/profile.component.jsx/profile.component';
 import Directory from './Components/directory/directory.component';
 import FullDepartment from './Components/full-department/FullDepartment'
 import CourseRouter from './Components/course/course-router';
+import Footer from './Components/footer/footer.component';
+import ErrorPage from './Pages/errorPage/error-component';
+import unitRouter from './Components/unit/unit-Router';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Header/>
-      <Switch>
-      <Route component={Landing} path={`/`} exact={true}/>
-      <Route component={Directory} path={`/departments`} exact={true}/>
-      <Route component={SignInSignUp} path={`/signup`}/>  
-      <Route component={Profile} path={`/profile`}/> 
-      <Route component={FullDepartment} path={`/departments/:departmentCode`}/>
-      <Route component={CourseRouter} path={`/course/:courseCode`}/>
-      </Switch>
+      <div className='body'>
+        <Switch>
+          <Route component={Landing} path={`/`} exact={true}/>
+          <Route component={Directory} path={`/departments`} exact={true}/>
+          <Route component={SignInSignUp} path={`/signup`}/>  
+          <Route component={Profile} path={`/profile`}/> 
+          <Route component={FullDepartment} path={`/departments/:departmentCode`}/>
+          <Route component={CourseRouter} path={`/course/:courseCode`}/>
+          <Route component={unitRouter} path={`/units/:unitCode`}/>
+          <Route component={ErrorPage} path={`/error`}/>
+        </Switch>
+      </div>
+      <Footer/>
     </div>
   );
 }

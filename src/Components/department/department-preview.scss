@@ -1,6 +1,5 @@
 .department {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
+  display: flex;
 }
 
 .button {

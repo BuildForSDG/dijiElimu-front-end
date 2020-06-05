@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import FormInput from '../form-input/form-input'
 import { createStructuredSelector } from 'reselect'
-import { startCreateCourse } from '../../redux/course/course-actions'
+import { startCreateCourse, startUpdateCourse, toggleComponentToUpdate, resetCreateCourseComponent } from '../../redux/course/course-actions'
 import { connect } from 'react-redux'
 import Button from '../button/button'
 import  './create-course.styles.scss';
+import { withRouter } from 'react-router-dom'
+import { selectCOmponentIsCreating, selectComponentIsUpdating } from '../../redux/course/course-selectors'
 
 class RegisterCourse extends Component {
     constructor(props) {
@@ -15,6 +17,10 @@ class RegisterCourse extends Component {
              blog: ''
         }
     }
+    componentWillUnmount = () => {
+        const {resetCreateCourse} = this.props
+        resetCreateCourse()
+    }
     
     handleChange=e=>{
         const {name, value} = e.target
@@ -24,17 +30,26 @@ class RegisterCourse extends Component {
     }
     submitForm =e => {
         e.preventDefault()
-        const {startCreateCourse} = this.props
+        const {startCreateCourse, history, isUpdating, isCreating, startUpdateCourse} = this.props
         const courseDetails = this.state
-        startCreateCourse(courseDetails)
+        if (isUpdating) {
+            startUpdateCourse({courseDetails, history})
+        }
+        if (isCreating) {
+            startCreateCourse({courseDetails, history})
+        }
     }
     
     render=()=> {
         const {handleChange, submitForm} = this
         const {title, blog} = this.state
+        const {isCreating, isUpdating} = this.props
         return (
             <div className='create-course-card'>
-            <h3>Register Course</h3>
+            {
+                isCreating?<h3>Register Course</h3>: <h3>Update Course</h3>
+            }
+            
             <form onSubmit={submitForm}>
                 <FormInput type='text' required name='title' value={title} handleChange={handleChange} placeholder='title'/>
                 <textarea name='blog' value={blog} required onChange={handleChange} className='create-course-text-area'
@@ -50,11 +65,14 @@ class RegisterCourse extends Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-    startCreateCourse: startCreateCourse
+    isUpdating: selectComponentIsUpdating,
+    isCreating: selectCOmponentIsCreating
 })
 const mapDispatchToProps = dispatch => ({
-    startCreateCourse: courseDetails => dispatch(startCreateCourse(courseDetails))
+    startCreateCourse: courseDetails => dispatch(startCreateCourse(courseDetails)),
+    startUpdateCourse: courseDetails => dispatch(startUpdateCourse(courseDetails)),
+    toggleComponentToUpdate: () => dispatch(toggleComponentToUpdate()),
+    resetCreateCourse: () => dispatch(resetCreateCourseComponent()),
 })
 
-
-export default connect(mapStateToProps, mapDispatchToProps) (RegisterCourse)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps) (RegisterCourse))

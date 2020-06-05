@@ -2,8 +2,7 @@ import {
   takeLatest, all, call, put
 
 } from 'redux-saga/effects';
-import { push } from 'react-router-redux';
-import axios from 'axios';
+import axios from '../axios';
 import courseActionTypes from './course-action-types';
 import {
   fetchCourseSuccess,
@@ -26,9 +25,8 @@ function* fetchCourseWorker(action) {
   try {
     // const course = yield axios.get(`https://www.dijielimuAPI.com/courses/:${payload}`)
     const course = selectCourseDepartments(data.departments, payload);
-    const code = { course };
+
     yield put(fetchCourseSuccess(course));
-    yield put(push(`/course/${code}`));
   } catch (error) {
     yield put(fetchCourseFailure(error));
   }
@@ -41,11 +39,14 @@ export function* fetchCourseWatcher() {
 // create course sagas
 function* createCourseWorker(action) {
   const { payload } = action;
+  const { courseDetails, history } = payload;
   try {
-    const course = yield axios.post(`https://www.dijielimuAPI.com/courses/:${payload}`);
+    const { course } = yield axios.post('/courses', courseDetails);
     yield put(createCourseSuccess(course));
+    yield history.push(`/course${course.code}`);
   } catch (error) {
     yield put(createCourseFailure(error));
+    yield history.push('/error');
   }
 }
 
@@ -56,7 +57,7 @@ export function* createCourseWatcher() {
 function* deleteCourseWorker(action) {
   const { payload } = action;
   try {
-    const course = yield axios.get(`https://www.dijielimuAPI.com/courses/:${payload}`);
+    const course = yield axios.get(`/courses/${payload}`);
     yield put(call(deleteCourseSuccess, course));
   } catch (error) {
     yield put(call(deleteCourseFailure, error));
@@ -69,8 +70,10 @@ export function* deleteCourseWatcher() {
 // UPDATE COURSE SAGAS
 function* updateCourseWorker(action) {
   const { payload } = action;
+  const { courseCode } = payload;
   try {
-    const course = yield axios.get(`https://www.dijielimuAPI.com/courses/:${payload}`);
+    const response = yield axios.patch(`/courses/${courseCode}`);
+    const { course } = response;
     yield put(call(updateCourseSuccess, course));
   } catch (error) {
     yield put(call(updateCourseFailure, error));
@@ -79,6 +82,22 @@ function* updateCourseWorker(action) {
 
 export function* updateCourseWatcher() {
   yield takeLatest(courseActionTypes.UPDATE_COURSE_START, updateCourseWorker);
+}
+// COURSE SUBSCRIPTION SAGAS
+export function* subscribeToCourseWorker(action) {
+  const { subsDetails, history } = action.payload;
+  try {
+    const response = yield axios.post('/courseSubscription', subsDetails);
+    const subscription = response.data;
+    const { status } = response;
+    yield put({ subscription, status });
+  } catch (error) {
+    yield put({ error });
+    history.push('/error');
+  }
+}
+export function* subscribeToCourseWatcher() {
+  yield takeLatest(courseActionTypes.SUBSCRIBE_COURSE_START, subscribeToCourseWorker);
 }
 // courses root saga
 export function* courseSagas() {

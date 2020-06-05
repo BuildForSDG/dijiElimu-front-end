@@ -39,3 +39,18 @@ export const signOutUser = () => ({
 export const toggleProfileHidden = () => ({
   type: userActionTypes.TOGGLE_PROFILE_HIDDEN
 });
+
+// SUBSCRIPTION actions
+export const getCourseSubsStart = (subDetails) => ({
+  type: userActionTypes.GET_COURSE_SUBSCRIPTIONS_FAILURE,
+  payload: subDetails
+});
+
+export const getCourseSubsSuccess = (subs) => ({
+  type: userActionTypes.GET_COURSE_SUBSCRIPTIONS_SUCCESS,
+  payload: subs
+});
+export const getCourseSubsFailure = (error) => ({
+  type: userActionTypes.GET_COURSE_SUBSCRIPTIONS_SUCCESS,
+  payload: error
+});
