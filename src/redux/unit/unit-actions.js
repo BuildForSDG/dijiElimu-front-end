@@ -61,3 +61,18 @@ export const deleteUnitFailure = (error) => ({
   type: unitActionTypes.DELETE_UNIT_FAILURE,
   payload: error
 });
+
+export const toggleCreateUnitHidden = () => ({
+  type: unitActionTypes.TOGGLE_CREATE_UNIT_HIDDEN
+});
+
+// GENERAL ACTIONS
+export const toggleToCreateUnit = () => ({
+  type: unitActionTypes.TOGGLE_TO_CREATE_UNIT
+});
+export const toggleToUpdateUnit = () => ({
+  type: unitActionTypes.TOGGLE_TO_UPDATE_UNIT
+});
+export const toggleToReset = () => ({
+  type: unitActionTypes.TOGGLE_TO_RESET_COMPONENT
+});

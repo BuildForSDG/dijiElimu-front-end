@@ -10,8 +10,8 @@ import Button from '../button/button'
 import { Link } from 'react-router-dom'
 import { signOutUser } from '../../redux/user/user.actions'
 import CreateCourseComponent from '../create-course/create-course.component'
-import { selectCreateCourseHidden } from '../../redux/course/course-selectors'
-import { toggleCreateCourseHidden } from '../../redux/course/course-actions'
+import { selectCreateCourseHidden, selectCreatingCourseNotUpdating, selectCOmponentIsCreating } from '../../redux/course/course-selectors'
+import { toggleCreateCourseHidden, toggleComponentToCreate } from '../../redux/course/course-actions'
 import './profile.styles.scss'
 
 const Profile = (props) => {
@@ -23,6 +23,7 @@ const Profile = (props) => {
         logOut,
         history,
         selectCreateCourseHidden,
+        toggleComponentToCreate,
         toggleCreateCourse
     } = props
     const logOutUser = () => {
@@ -31,6 +32,11 @@ const Profile = (props) => {
         
         
     }
+    const createCourse = () => {
+        toggleComponentToCreate()
+        toggleCreateCourse()
+    }
+    
     
     return (
         <div>
@@ -50,11 +56,9 @@ const Profile = (props) => {
                             })
                         }
                     </div>
-                    <div>
-                        {isTutor?<button onClick={() => {
-                            toggleCreateCourse()
-                        }
-                        } className='create-course-toggle'>Create Course</button>:null}
+                    <div className='mt1'>
+                        {isTutor?<button onClick={createCourse}
+                         className='create-course-toggle'>Create Course</button>:null}
                     </div>
                    
                     {!selectCreateCourseHidden && <CreateCourseComponent/>}
@@ -75,7 +79,8 @@ const Profile = (props) => {
 }
 const mapDispatchToProps = dispatch=>({
     logOut: () => dispatch(signOutUser()),
-    toggleCreateCourse: () => dispatch(toggleCreateCourseHidden())
+    toggleCreateCourse: () => dispatch(toggleCreateCourseHidden()),
+    toggleComponentToCreate: ()=>dispatch((toggleComponentToCreate())),
     
      
 })
@@ -83,6 +88,7 @@ const mapStateToProps = createStructuredSelector({
     currentUser: selectCurrentUser,
     isAdmin: selectUserIsAdmin,
     isTutor: selectUserIsTutor,
-    selectCreateCourseHidden: selectCreateCourseHidden
+    selectCreateCourseHidden: selectCreateCourseHidden,
+    creatingCourse: selectCOmponentIsCreating
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

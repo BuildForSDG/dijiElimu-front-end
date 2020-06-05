@@ -6,13 +6,10 @@ import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { selectCourse, selectCourseLoading } from '../../redux/course/course-selectors';
 import { selectCurrentUser } from '../../redux/user/user-selectors';
-import Unit from '../unit/unit.component'
 
 import { startFetchCourse } from '../../redux/course/course-actions'
-import { selectUnitIsLoading } from '../../redux/unit/unit-selectors'
 
 const CourseWithSpinner = withSpinner(Course)
-const UnitWithSpinner = withSpinner(Unit)
 class CourseRouter extends React.Component {
     componentDidMount =()=>{
         const {match: {params:{courseCode}}} = this.props
@@ -28,7 +25,6 @@ class CourseRouter extends React.Component {
                 return <CourseWithSpinner isLoading={!courseLoading} course={course}{...props}/>
             }
             }/> 
-            <Route component={UnitWithSpinner} path={`${match.path}/:unitCode`}/>   
         </div>
     )}
 }
@@ -37,7 +33,6 @@ const mapStateToProps = createStructuredSelector({
     course: selectCourse,
     currentUser: selectCurrentUser,
     courseLoading: selectCourseLoading,
-    unitLoading: selectUnitIsLoading,
 })
 const mapDispatchToProps = dispatch=>({
     fetchCourseStart: (courseId)=>dispatch(startFetchCourse(courseId))

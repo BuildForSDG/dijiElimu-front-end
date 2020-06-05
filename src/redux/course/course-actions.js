@@ -63,6 +63,30 @@ export const updateCourseFailure = (error) => ({
 
 
 // general actions
-export const toggleCreateCourseHidden = (params) => ({
+export const toggleCreateCourseHidden = () => ({
   type: courseActionTypes.TOGLLE_CREATE_COURSE_HIDDEN
+});
+
+export const toggleComponentToUpdate = () => ({
+  type: courseActionTypes.TOGGLE_TO_UPDATE
+});
+export const toggleComponentToCreate = () => ({
+  type: courseActionTypes.TOGGLE_TO_CREATE
+});
+export const resetCreateCourseComponent = () => ({
+  type: courseActionTypes.RESET_CREATE_COURSE
+});
+
+// COURSE SUBSCRIPTION ACTIONS
+export const subscribeToCourseStart = (subsDetails) => ({
+  type: courseActionTypes.SUBSCRIBE_COURSE_START,
+  payload: subsDetails
+});
+export const subscribeToCourseFailure = (error) => ({
+  type: courseActionTypes.SUBSCRIBE_COURSE_SUCCESS,
+  payload: error
+});
+export const subscribeToCourseSuccess = (subscription) => ({
+  type: courseActionTypes.SUBSCRIBE_COURSE_FAILURE,
+  payload: subscription
 });

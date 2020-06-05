@@ -1,14 +1,15 @@
 import {
   takeLatest, all, call, put
 } from 'redux-saga/effects';
-import axios from 'axios';
+import axios from '../axios';
 import videoActionTypes from './video-action-types';
 import { fetchVideoSuccess, fetchVideoFailure } from './video-actions';
 
 function* fetchVideoWorker(action) {
-  const { payload } = action;
+  const { payload: { videoCode, history } } = action;
   try {
-    const video = yield axios.get(`https://www.dijielimuAPI.com/courses/:${payload}`);
+    const response = yield axios.get(`/videos/:${videoCode}`);
+    const video = response.data
     yield put(call(fetchVideoSuccess, video));
   } catch (error) {
     yield put(call(fetchVideoFailure, error));

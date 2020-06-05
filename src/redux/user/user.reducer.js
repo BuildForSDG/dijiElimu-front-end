@@ -3,9 +3,11 @@ import userData from '../../userData.json';
 
 const INITIAL_STATE = {
   currentUser: userData.userData,
+  token: null,
   signUpError: '',
   signInError: '',
-  profileHidden: true
+  profileHidden: true,
+  myCourses: null
 };
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -13,7 +15,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case userActionTypes.SIGN_UP_USER_SUCCESS:
       return {
         ...state,
-        currentUser: action.payload
+        currentUser: action.payload.user,
+        token: action.payload.token
       };
     case userActionTypes.SIGN_IN_USER_FAILURE:
       return {
@@ -35,6 +38,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         profileHidden: !state.profileHidden
+      };
+    case userActionTypes.GET_COURSE_SUBSCRIPTIONS_SUCCESS:
+
+      return {
+        ...state,
+        myCourses: action.payload
       };
     default:
       return state;
