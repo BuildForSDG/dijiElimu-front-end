@@ -50,6 +50,11 @@ const unitReducer = (state = INITIAL_STATE, action) => {
         isCreatingUnit: false,
         isUpdatingUnit: false
       };
+    case unitActionTypes.HIDE_CREATE_UNIT_COMPONENT:
+      return {
+        ...state,
+        createUnitHidden: true
+      }
     default:
       return state;
   }

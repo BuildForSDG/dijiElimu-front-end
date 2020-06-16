@@ -76,3 +76,7 @@ export const toggleToUpdateUnit = () => ({
 export const toggleToReset = () => ({
   type: unitActionTypes.TOGGLE_TO_RESET_COMPONENT
 });
+
+export const hideCreateUnitComponent = () => ({
+  type: unitActionTypes.HIDE_CREATE_UNIT_COMPONENT
+})

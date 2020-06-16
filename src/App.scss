@@ -4,12 +4,12 @@
 }
 
 .app {
-  min-height: 100vh;
+  height: 100%;
   position: relative;
 }
 
-.body {
-  min-height: 70vh;
+.page-wrapper {
+  min-height: 100vh;
   overflow-y: scroll;
 }
 
@@ -19,9 +19,11 @@
   --main-bg-color-3: #007e65;
   --main-bg-color-4: #0a9d80;
   --main-bg-color-5: #7e928d;
+  --main-danger-color-1: #a60019;
+  --main-danger-color-2: #a33344;
   --main-typo-color-1: #000;
   --main-typo-color-2: #ba7e59;
-  --main-typo-color-3: #d81e1e;
+  --main-typo-color-3: ;
   font-family: 'Roboto', sans-serif;
 
   button,
@@ -40,14 +42,17 @@ a {
   margin: auto;
 }
 
-.pl {
+.pll {
   padding-left: 5px;
 }
 
-.pr {
-  padding-right: 5px;
+.pt1 {
+  padding-top: 5px;
 }
 
 .mt1 {
   margin-top: 10px;
+}
+.ml1 {
+  margin-left: 5px;
 }

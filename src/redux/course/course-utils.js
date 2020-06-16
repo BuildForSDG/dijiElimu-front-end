@@ -2,15 +2,17 @@
 //     return courses.find(course=>course.id===courseId)
 // }
 
-const selectCourseDepartments = (departments, courseCode) => {
+const selectCourseDepartments = (departments, courseId) => {
   let course;
   departments.forEach((department) => {
     department.courses.forEach((cour) => {
-      if (cour.code === courseCode) {
+      if (cour.id === courseId) {
         course = cour;
       }
     });
   });
+  console.log(course);
+  
   return course;
 };
 

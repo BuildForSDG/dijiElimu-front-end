@@ -1,19 +1,16 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import ShowCard from '../ShowCard/show-card'
 import './department-preview.scss'
 import Button from '../button/button'
-import { selectDepartmentFromPreview } from '../../redux/department/department-actions'
 
 
-const DepartmentPreview = ({dept, history, match, location, selectDepartmentFromPreview}) => {
+const DepartmentPreview = ({dept, history}) => {
     
     
-    const {title, courses , code} = dept
+    const {title, courses , id} = dept
     const handleClick = () => {
-        selectDepartmentFromPreview(code)
-        history.push(`/departments/:${code}`)
+        history.push(`/departments/:${id}`)
 
     }
     
@@ -23,7 +20,7 @@ const DepartmentPreview = ({dept, history, match, location, selectDepartmentFrom
             <div className='department'>
             {   courses.map((course, index)=>{
                 if (index<=3) {
-                    return <ShowCard key={course.code} course={course}/>
+                    return <ShowCard key={course.id} course={course}/>
                 }
                     
                 })
@@ -39,8 +36,4 @@ const DepartmentPreview = ({dept, history, match, location, selectDepartmentFrom
 }
 
 
-const mapDispatchToProps = dispatch=>({
-    selectDepartmentFromPreview: (code) => dispatch(selectDepartmentFromPreview(code))
-    
-})
-export default withRouter(connect(null, mapDispatchToProps)(DepartmentPreview))
+export default withRouter(DepartmentPreview)

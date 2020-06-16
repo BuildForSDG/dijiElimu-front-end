@@ -3,7 +3,8 @@ import {
 } from 'redux-saga/effects';
 import axios from '../axios';
 import videoActionTypes from './video-action-types';
-import { fetchVideoSuccess, fetchVideoFailure } from './video-actions';
+import { fetchVideoSuccess } from './video-actions';
+import { foundError, showErrorModal } from '../error/error-actions';
 
 function* fetchVideoWorker(action) {
   const { payload: { videoCode, history } } = action;
@@ -12,7 +13,8 @@ function* fetchVideoWorker(action) {
     const video = response.data
     yield put(call(fetchVideoSuccess, video));
   } catch (error) {
-    yield put(call(fetchVideoFailure, error));
+    yield put(foundError(error.response));
+    yield put(showErrorModal())
   }
 }
 

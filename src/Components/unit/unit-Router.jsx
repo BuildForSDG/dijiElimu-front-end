@@ -15,10 +15,8 @@ class UnitRouter extends React.Component {
     
     componentDidMount= ()=>{
         const { match, startFetchUnit, history} = this.props
-        const {unitCode} = match.params
-        console.log(unitCode);
-        
-        startFetchUnit({history, unitCode})
+        const {unitId} = match.params        
+        startFetchUnit({history, unitId})
     }
     
     render =()=>{

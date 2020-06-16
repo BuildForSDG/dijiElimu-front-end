@@ -1,0 +1,16 @@
+.video-player-container {
+    border-bottom: 1px solid #aaa8a8;
+    border-width: 90%;
+    margin-top: 2rem;
+
+}
+@media (max-width: 768px) {
+    .video-title {
+        font-size: 12px;
+    }
+    
+  }
+  .video-player-container .action-panel {
+      display: flex;
+      justify-content: space-between;
+  }

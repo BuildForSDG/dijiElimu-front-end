@@ -31,9 +31,9 @@ export const createPdfFailure = (error) => ({
   payload: error
 });
 // DELETE
-export const startDeletePdf = (pdfCode) => ({
+export const startDeletePdf = (payload) => ({
   type: pdfActionTypes.DELETE_PDF_START,
-  payload: pdfCode
+  payload: payload
 }
 );
 export const deletePdfSuccess = (pdf) => ({
@@ -46,9 +46,9 @@ export const deletePdfFailure = (error) => ({
   payload: error
 });
 // update course
-export const startUpdatePdf = (pdfCode) => ({
+export const startUpdatePdf = (payload) => ({
   type: pdfActionTypes.UPDATE_PDF_START,
-  payload: pdfCode
+  payload: payload
 }
 );
 export const updatePdfSuccess = (pdf) => ({
@@ -60,3 +60,24 @@ export const updatePdfFailure = (error) => ({
   type: pdfActionTypes.UPDATE_PDF_FAILURE,
   payload: error
 });
+
+//MISCELANEOUS ACTIONS
+
+
+  export const togglePdfComponentToCreate = () => ({
+    type: pdfActionTypes.TOGGLE_PDF_COMPONENT_TO_CREATE
+  });
+
+  export const togglePdfComponentToUpdate = () => ({
+    type: pdfActionTypes.TOGGLE_PDF_COMPONENT_TO_UPDATE
+  });
+
+  export const hideCreatePdfComponent = () => ({
+    type: pdfActionTypes.HIDE_CREATE_PDF_COMPONENT
+  })
+  
+  export const toggleCreatePdfHidden = () => ({
+    type: pdfActionTypes.TOGGLE_CREATE_PDF_HIDDEN
+
+  })
+  

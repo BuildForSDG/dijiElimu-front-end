@@ -31,9 +31,9 @@ export const createCourseFailure = (error) => ({
   payload: error
 });
 // DELETE
-export const startDeleteCourse = (courseCode) => ({
+export const startDeleteCourse = (courseId) => ({
   type: courseActionTypes.DELETE_COURSE_START,
-  payload: courseCode
+  payload: courseId
 }
 );
 export const deleteCourseSuccess = (course) => ({
@@ -46,9 +46,9 @@ export const deleteCourseFailure = (error) => ({
   payload: error
 });
 // update course
-export const startUpdateCourse = (courseCode) => ({
+export const startUpdateCourse = (courseId) => ({
   type: courseActionTypes.UPDATE_COURSE_START,
-  payload: courseCode
+  payload: courseId
 }
 );
 export const updateCourseSuccess = (course) => ({

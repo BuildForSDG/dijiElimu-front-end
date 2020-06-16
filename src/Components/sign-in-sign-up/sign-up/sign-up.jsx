@@ -1,4 +1,5 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 import './sign-up.scss'
 import Button from '../../button/button'
 import FormInput from  '../../form-input/form-input'
@@ -16,12 +17,12 @@ class SignUp extends React.Component{
              email:'',
              password: '',
              confirmPassword:'',
-             role: 'student'
+             role:'student'
         }
     }
     
     
-    handleChange = (e)=>{
+    handleChange = (e)=>{        
         const {name, value} = e.target
         this.setState({
             [name]: value
@@ -29,14 +30,19 @@ class SignUp extends React.Component{
     }
     handleSubmit = async e=>{
         e.preventDefault()
-        const { email, password, firstName, secondName, confirmPassword } = this.state
+        console.log(this.state.role);
+        
+        const { email, password, firstName, secondName, confirmPassword, role } = this.state
         
         if (password!==confirmPassword) {
             alert('passwords do not match')
             return
         }
-       const {signUpStudentStart} = this.props
-       signUpStudentStart({ email, password, firstName, secondName })
+        const signUpData = { email, password, firstName, secondName, confirmPassword }
+        signUpData.isStudent = role==='student'
+        signUpData.isTutor = role==='tutor'
+       const {signUpStudentStart, history} = this.props
+       signUpStudentStart({signUpData, history})
     }
     
     render =()=>{
@@ -46,7 +52,7 @@ class SignUp extends React.Component{
             password,
             confirmPassword,
             email,
-            role 
+            role
         } = this.state;
         const { handleChange, handleSubmit } = this
         return (<div className='sign-up-section'>
@@ -58,15 +64,14 @@ class SignUp extends React.Component{
                     <FormInput type='password' name='password' handleChange={handleChange} value={password} label='password' />
                     <FormInput type='psssword' name='confirmPassword' handleChange={handleChange} value={confirmPassword} label='comfirmPassword' />
                     <div>
-                        <label htmlFor='role' className='select-label'>Sign-Up as?</label>
-                        <select onChange={handleChange} value ={role}  
-                         className='form-select' aria-label='select your role'>
-                            <option value="student" aria-label='student'>Student</option>
-                            <option  value='tutor' aria-label='tutor'>Tutor</option>
-                        </select>
-                    </div>
+                    <label htmlFor='role' className='select-label'>Role</label>
+                    <select onChange={handleChange} value ={role} name='role' className='form-select' aria-label='select data period type'>
+                        <option  value='student' aria-label='days'>Student</option>
+                        <option value="tutor" aria-label='weeks'>Tutor</option>
+                    </select>
+                </div>
                     <div className='buttons'>
-                        <Button type='button' name='password' label='SUBMIT'  label='SUBMIT'  type='submit'/>
+                        <Button name='password' label='SUBMIT'  type='submit'/>
                     </div>
                 </form>
             </div>
@@ -79,4 +84,4 @@ const mapDispatchToProps = dispatch =>({
     signUpStudentStart: (signUpData)=>dispatch(signUpStudentStart(signUpData))
 })
 
-export default connect(null, mapDispatchToProps)(SignUp)
+export default withRouter(connect(null, mapDispatchToProps)(SignUp))

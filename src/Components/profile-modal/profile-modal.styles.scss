@@ -1,11 +1,27 @@
 .profile {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
+  border-radius: 5px;
+  background: #ffffff;
   overflow: scroll;
   position: absolute;
-  right: 50px;
+  right: 0;
   top: 16px;
-  width: 250px;
-  z-index: +5;
+  width: 400px;
+  z-index: +2;
+  .close-profile-modal {
+    font-size: 32px;
+    color: #cfcccc;
+    &:hover {
+      cursor: pointer;
+      color: #413e3e;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .profile {
+    width: 60%;
+    height: 100vh;
+  }
 }

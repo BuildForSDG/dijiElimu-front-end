@@ -1,6 +1,9 @@
-.create-course-text-area {
+.blog-text-area {
   display: block;
   width: 100%;
+  font-size: 12px;
+  border: 1px solid #000;
+  border-radius: 5px;
 
   &:focus {
     outline: none;
