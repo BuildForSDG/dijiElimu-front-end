@@ -1,0 +1,21 @@
+.error-message-container {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  border: 1px solid #afaeae;
+  border-radius: 5px;
+  background-color: #e9e1e1;
+  width: 400px;
+}
+
+.modal-footer {
+display: flex;
+justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .error-message-container{
+    width: 70%;
+  }
+}
+

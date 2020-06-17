@@ -5,13 +5,11 @@ import axios from 'axios';
 import pdfActionTypes from './pdf-action-types';
 import {
   fetchPdfSuccess,
-  createPdfFailure,
   createPdfSuccess,
-  deletePdfFailure,
   deletePdfSuccess,
-  updatePdfFailure,
   updatePdfSuccess
 } from './pdf-actions';
+import { foundError, showErrorModal } from '../error/error-actions';
 
 
 // fetch pdf saga
@@ -21,7 +19,8 @@ function* fetchPdfWorker(action) {
     const pdf = yield axios.get(`https://www.dijielimuAPI.com/courses/:${payload}`);
     yield put(fetchPdfSuccess(pdf));
   } catch (error) {
-    yield put(fetchPdfSuccess(error));
+    yield put(foundError(error.response));
+    yield put(showErrorModal())
   }
 }
 
@@ -36,7 +35,8 @@ function* createPdfWorker(action) {
     const pdf = yield axios.get(`https://www.dijielimuAPI.com/courses/:${payload}`);
     yield put(call(createPdfSuccess, pdf));
   } catch (error) {
-    yield put(call(createPdfFailure, error));
+    yield put(foundError(error.response));
+    yield put(showErrorModal())
   }
 }
 
@@ -50,7 +50,8 @@ function* deletePdfWorker(action) {
     const pdf = yield axios.get(`https://www.dijielimuAPI.com/courses/:${payload}`);
     yield put(call(deletePdfSuccess, pdf));
   } catch (error) {
-    yield put(call(deletePdfFailure, error));
+    yield put(foundError(error.response));
+    yield put(showErrorModal())
   }
 }
 
@@ -64,7 +65,8 @@ function* updatePdfWorker(action) {
     const pdf = yield axios.get(`https://www.dijielimuAPI.com/courses/:${payload}`);
     yield put(call(updatePdfSuccess, pdf));
   } catch (error) {
-    yield put(call(updatePdfFailure, error));
+    yield put(foundError(error.response));
+    yield put(showErrorModal())
   }
 }
 

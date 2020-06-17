@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import Button from '../../button/button'
 import  './create-unit.styles.scss';
 import { selectComponentIsCreating, selectComponentIsUpdating } from '../../../redux/unit/unit-selectors'
+import { withRouter } from 'react-router-dom'
 
 class RegisterUnit extends Component {
     constructor(props) {
@@ -25,12 +26,13 @@ class RegisterUnit extends Component {
     }
     submitForm =e => {
         e.preventDefault()
-        const {startCreateCourse, isCreating, isUpdating} = this.props
+        const {startCreateCourse, isCreating, isUpdating, unitId, history, courseId} = this.props
         const unitDetails = this.state
         if (isCreating) {
-            startCreateCourse(unitDetails)
+            unitDetails.course = courseId
+            startCreateCourse({unitDetails, history})
         }else if(isUpdating){
-            updateUnitStart(unitDetails)
+            updateUnitStart({unitDetails, unitId, history})
         }
         
     }
@@ -44,10 +46,10 @@ class RegisterUnit extends Component {
             {isCreating?<h3>Register unit</h3>:null}
             {isUpdating?<h3>Update unit</h3>:null}
             <form onSubmit={submitForm}>
-                <FormInput type='text' required name='title' value={title} handleChange={handleChange} placeholder='title'/>
-                <textarea name='blog' value={blog} required onChange={handleChange} className='create-course-text-area'
+                <FormInput type='text' required name='title' value={title} handleChange={handleChange} label='unit title'/>
+                <textarea name='blog' value={blog} required onChange={handleChange} className='blog-text-area'
                 rows='5'
-                placeholder='Tell us about the course 500 characters'
+                placeholder='Tell us about the unit 500 characters'
                 ></textarea>
                 <Button type='submit' label='SUBMIT'/>
                 
@@ -60,7 +62,7 @@ class RegisterUnit extends Component {
 
 const mapStateToProps = createStructuredSelector({
     isCreating: selectComponentIsCreating,
-    isUpdating: selectComponentIsUpdating
+    isUpdating: selectComponentIsUpdating,    
 })
 const mapDispatchToProps = dispatch => ({
     createUnitStart: unitDetails => dispatch(createUnitStart(unitDetails)),
@@ -68,4 +70,4 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps) (RegisterUnit)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps) (RegisterUnit))

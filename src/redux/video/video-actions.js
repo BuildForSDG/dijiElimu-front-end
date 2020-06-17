@@ -47,9 +47,9 @@ export const updateVideoFailure = (error) => ({
 });
 
 // DELETE ACTIONS
-export const deleteVideoStart = (videoCode) => ({
+export const deleteVideoStart = (videoId) => ({
   type: videoActionTypes.DELETE_VIDEO_START,
-  payload: videoCode
+  payload: videoId
 }
 );
 export const deleteVideoSuccess = (video) => ({
@@ -61,3 +61,24 @@ export const deleteVideoFailure = (error) => ({
   type: videoActionTypes.DELETE_VIDEO_FAILURE,
   payload: error
 });
+// UTILITY ACTIONS
+export const toggleCreateVideoHidden = () => ({
+  type: videoActionTypes.TOGGLE_CREATE_VIDEO_HIDDEN
+})
+
+export const resetCreateVideoComponent = () => ({
+  type: videoActionTypes.RESET_CREATE_VIDEO_COMPONENT
+})
+
+export const toggleComponentToCreate = () => ({
+  type: videoActionTypes.TOGGLE_COMPONENT_TO_CREATE
+})
+
+export const toggleComponentToUpdating = () => ({
+  type: videoActionTypes.TOGGLE_COMPONENT_TO_UPDATE
+})
+export const hideCreateVideoComponent = () => ({
+  type: videoActionTypes.HIDE_CREATE_VIDEO_COMPONENT
+})
+
+

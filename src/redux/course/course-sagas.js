@@ -6,29 +6,24 @@ import axios from '../axios';
 import courseActionTypes from './course-action-types';
 import {
   fetchCourseSuccess,
-  createCourseFailure,
   createCourseSuccess,
-  deleteCourseFailure,
   deleteCourseSuccess,
-  updateCourseFailure,
   updateCourseSuccess,
-  fetchCourseFailure
 } from './course-actions';
-import data from '../../mydata.json';
-import selectCourseDepartments from './course-utils';
+import { foundError, showErrorModal } from '../error/error-actions';
 
 // fetch course saga
 function* fetchCourseWorker(action) {
-  const { payload } = action;
+  const { payload:{history, courseId} } = action;
 
 
   try {
-    // const course = yield axios.get(`https://www.dijielimuAPI.com/courses/:${payload}`)
-    const course = selectCourseDepartments(data.departments, payload);
-
+    const response = yield axios.get(`/courses/:${courseId}`)
+    const course = response.data
     yield put(fetchCourseSuccess(course));
   } catch (error) {
-    yield put(fetchCourseFailure(error));
+    yield put(foundError(error.response));
+    yield put(showErrorModal())
   }
 }
 
@@ -41,12 +36,12 @@ function* createCourseWorker(action) {
   const { payload } = action;
   const { courseDetails, history } = payload;
   try {
-    const { course } = yield axios.post('/courses', courseDetails);
-    yield put(createCourseSuccess(course));
-    yield history.push(`/course${course.code}`);
+    const response = yield axios.post('/courses', courseDetails);
+    yield put(createCourseSuccess(response.data));
+    yield history.push(`/course${response.data.id}`);
   } catch (error) {
-    yield put(createCourseFailure(error));
-    yield history.push('/error');
+    yield put(foundError(error.response));
+    yield put(showErrorModal())
   }
 }
 
@@ -57,10 +52,11 @@ export function* createCourseWatcher() {
 function* deleteCourseWorker(action) {
   const { payload } = action;
   try {
-    const course = yield axios.get(`/courses/${payload}`);
-    yield put(call(deleteCourseSuccess, course));
+    const response = yield axios.get(`/courses/${payload}`);
+    yield put(deleteCourseSuccess(response.data));
   } catch (error) {
-    yield put(call(deleteCourseFailure, error));
+    yield put(foundError(error.response));
+    yield put(showErrorModal())
   }
 }
 
@@ -73,10 +69,11 @@ function* updateCourseWorker(action) {
   const { courseCode } = payload;
   try {
     const response = yield axios.patch(`/courses/${courseCode}`);
-    const { course } = response;
-    yield put(call(updateCourseSuccess, course));
+    const course  = response.data;
+    yield put(updateCourseSuccess(course));
   } catch (error) {
-    yield put(call(updateCourseFailure, error));
+    yield put(foundError(error.response));
+    yield put(showErrorModal())
   }
 }
 
@@ -87,13 +84,13 @@ export function* updateCourseWatcher() {
 export function* subscribeToCourseWorker(action) {
   const { subsDetails, history } = action.payload;
   try {
-    const response = yield axios.post('/courseSubscription', subsDetails);
+    const response = yield axios.post('/subscriptions', subsDetails);
     const subscription = response.data;
     const { status } = response;
     yield put({ subscription, status });
   } catch (error) {
-    yield put({ error });
-    history.push('/error');
+    yield put(foundError(error.response));
+    yield put(showErrorModal())
   }
 }
 export function* subscribeToCourseWatcher() {

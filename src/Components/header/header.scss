@@ -65,3 +65,13 @@
   width: 250px;
   z-index: 1;
 }
+.profile-modal-toggle {
+  width: 20px;
+  background-image: url('../../assets/images/user_profile.jpg') center cover;
+  height: 20px;
+  border: 1px gray solid;
+  border-radius: 50%;
+  &:hover {
+    cursor: pointer;
+  }
+}

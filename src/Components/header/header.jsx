@@ -26,10 +26,10 @@ const Header =(props)=>{
                         history.push('/signup')
                     }} className='header-option'>SIGN OUT</li>:<Link to='/signup'><li>SIGN IN</li></Link>}
                     
-                    <i className="fas fa-user-circle header-option " onClick={() => {
+                    <span className='profile-modal-toggle'><i className="fas fa-user-circle header-option " onClick={() => {
                         toggleProfileHidden()
                     }
-                    }></i>
+                    }></i></span>
                     
                     {
                         profileHidden===true?null:<div className='cart'>

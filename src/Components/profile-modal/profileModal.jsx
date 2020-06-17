@@ -4,7 +4,6 @@ import {createStructuredSelector} from'reselect'
 import {withRouter} from 'react-router-dom'
 import { selectCurrentUser,
     selectUserIsAdmin,
-    selectUserIsTutor
  } from '../../redux/user/user-selectors';
 import { signOutUser, toggleProfileHidden } from '../../redux/user/user.actions';
 import Button from '../button/button';
@@ -15,8 +14,6 @@ const ProfileModal = (props)=>{
     const {history, 
         toggleProfileHidden, 
         currentUser,
-        isAdmin,
-        isTutor
     } = props
     const handleClick = () => {
         const { logOutUser, history } = props
@@ -33,15 +30,20 @@ const ProfileModal = (props)=>{
         toggleProfileHidden()
         history.push('/profile')
     }
+    const closeModal = () => {
+        toggleProfileHidden()
+    }
+    
     
     
     
         return (
         <div className='profile' >
+            <span className='close-profile-modal' onClick={closeModal}>{'>'}</span>
             {
                 currentUser?
                 <div>
-                <h6> Logged in as: <span> {currentUser.firstName}</span> {currentUser.secondName}</h6>
+                <h6 className ='ml1'> Logged in as: <span> {currentUser.firstName}</span> {currentUser.secondName}</h6>
                 <Button onClick= {goToFullProfile} label='FULL PROFILE'/>
                 <Button onClick={handleClick} label={'LOG OUT'}/>
             </div>: 

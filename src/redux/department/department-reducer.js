@@ -1,16 +1,19 @@
 import departmentActionTypes from './department-action-types';
-import departments from '../../mydata.json';
 
 const INITIAL_STATE = {
-  departments: departments.departments,
+  departments: [],
   error: null,
-  fullDepartment: null
+  fullDepartment: null,
+  isCreating: false,
+  isUpdating: false,
+  createDepartmentHidden: true,
 };
 const departmentReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case departmentActionTypes.FETCH_DEPARTMENTS_START:
+    case departmentActionTypes.FETCH_DEPARTMENT_SUCCESS:
       return {
-        ...state
+        ...state,
+        fullDepartment: action.payload
       };
     case departmentActionTypes.FETCH_DEPARTMENTS_SUCCESS:
       return {
@@ -33,11 +36,35 @@ const departmentReducer = (state = INITIAL_STATE, action) => {
         isLoading: false,
         fullDepartment: action.payload
       };
-    case departmentActionTypes.SELECT_DEPARTMENT_FROM_PREVIEW:
+   
+    case departmentActionTypes.TOGGLE_COMPONENT_TO_CREATE:
       return {
         ...state,
-        fullDepartment: state.departments.find((department) => department.code === action.payload)
-      };
+        isCreating: true,
+        isUpdating: false
+      }
+    case departmentActionTypes.TOGGLE_COMPONENT_TO_UPDATE:
+      return {
+        ...state,
+        isCreating: false,
+        isUpdating: true
+      }
+    case departmentActionTypes.RESET_CREATE_COMPONENT:
+      return {
+        ...state,
+        isCreating: false,
+        isUpdating: false
+      }
+    case departmentActionTypes.TOGGLE_CREATE_DEPARTMENT_HIDDEN:
+      return {
+        ...state,
+        createDepartmentHidden: !state.createDepartmentHidden
+      }
+      case departmentActionTypes.HIDE_CREATE_COMPONENT:
+        return {
+          ...state,
+          createDepartmentHidden: true
+        }
     default:
       return state;
   }

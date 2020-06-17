@@ -7,6 +7,7 @@ import Button from '../button/button'
 import  './create-course.styles.scss';
 import { withRouter } from 'react-router-dom'
 import { selectCOmponentIsCreating, selectComponentIsUpdating } from '../../redux/course/course-selectors'
+import { selectDepartments } from '../../redux/department/department-selectors'
 
 class RegisterCourse extends Component {
     constructor(props) {
@@ -14,7 +15,8 @@ class RegisterCourse extends Component {
     
         this.state = {
              title : '',
-             blog: ''
+             blog: '',
+             department: ''
         }
     }
     componentWillUnmount = () => {
@@ -42,8 +44,8 @@ class RegisterCourse extends Component {
     
     render=()=> {
         const {handleChange, submitForm} = this
-        const {title, blog} = this.state
-        const {isCreating, isUpdating} = this.props
+        const {title, blog, department} = this.state
+        const {isCreating, departments} = this.props
         return (
             <div className='create-course-card'>
             {
@@ -52,9 +54,17 @@ class RegisterCourse extends Component {
             
             <form onSubmit={submitForm}>
                 <FormInput type='text' required name='title' value={title} handleChange={handleChange} placeholder='title'/>
-                <textarea name='blog' value={blog} required onChange={handleChange} className='create-course-text-area'
+
+                <textarea name='blog' value={blog} required onChange={handleChange} 
+                className='blog-text-area' rows='5'
                 placeholder='Tell us about the course 500 characters'
                 ></textarea>
+
+                <select onChange={handleChange} value ={department} name='department' className='form-select' aria-label='select department for the course'>
+                {departments.map(department=>{
+                    return <option  value={department.id} >{department.title}</option>
+                })}
+                </select>
                 <Button type='submit' label='SUBMIT'/>
                 
             </form>
@@ -66,7 +76,8 @@ class RegisterCourse extends Component {
 
 const mapStateToProps = createStructuredSelector({
     isUpdating: selectComponentIsUpdating,
-    isCreating: selectCOmponentIsCreating
+    isCreating: selectCOmponentIsCreating,
+    departments: selectDepartments
 })
 const mapDispatchToProps = dispatch => ({
     startCreateCourse: courseDetails => dispatch(startCreateCourse(courseDetails)),

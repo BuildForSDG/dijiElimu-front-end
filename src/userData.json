@@ -4,12 +4,12 @@
         "secondName": "Mungai",
         "email": "mungaijames.mj@gmail.com",
         "id": "1234",
-        "role":"tutor",
+        "isTutor":"true",
         "isAdmin":"true",
         "myCourses": [
             {  
                 "name": "Bachelor of Mathematics",
-                "code": "1401",
+                "id": "1401",
                 "approved": "true",
                 "createAt":"153939393993",
                 "updatedAt": "12445555"
@@ -18,37 +18,37 @@
         "createdAt": "1233333333",
         "myUnits": [
             {
-                "code": "140101",
+                "id": "140101",
                 "course": "1401",
                 "name":"Algebra",
                 "tutor": "1234"
             },
             {
-                "code": "140102",
+                "id": "140102",
                 "course": "1401",
                 "name":"Geometry",
                 "tutor": "1235"
             },
             {
-                "code": "140103",
+                "id": "140103",
                 "course": "1401",
                 "name":"Discrete Mathematics",
                 "tutor": "1236"
             },
             {
-                "code": "140104",
+                "id": "140104",
                 "course": "1401",
                 "name":"Statistics 1",
                 "tutor": "1237"
             },
             {
-                "code": "140105",
+                "id": "140105",
                 "course": "1401",
                 "name":"Vector Analysis 1",
                 "tutor": "1234"
             },
             {
-                "code": "140106",
+                "id": "140106",
                 "course": "1401",
                 "name":"Communication skills",
                 "tutor": "1234"
@@ -59,7 +59,7 @@
             {
                 
                     "method": "stripe",
-                    "code": "098726",
+                    "id": "098726",
                     "amount": "1200",
                     "course": "1401",
                     "unit":  "140106",     

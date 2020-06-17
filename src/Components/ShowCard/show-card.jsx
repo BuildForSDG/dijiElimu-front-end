@@ -10,7 +10,7 @@ const ShowCard = ({course, history}) => {
     
   };
   const handleClick =() => {
-    history.push(`/course/${course.code}`)
+    history.push(`/courses/${course.id}`)
   }
   
   return   (

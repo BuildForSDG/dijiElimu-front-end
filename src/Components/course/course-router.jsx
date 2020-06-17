@@ -12,9 +12,9 @@ import { startFetchCourse } from '../../redux/course/course-actions'
 const CourseWithSpinner = withSpinner(Course)
 class CourseRouter extends React.Component {
     componentDidMount =()=>{
-        const {match: {params:{courseCode}}} = this.props
+        const {match: {params:{courseId}}, history} = this.props
         const {fetchCourseStart} = this.props
-        fetchCourseStart(courseCode)
+        fetchCourseStart({history, courseId})
     }
     render = ()=>{
         const {match, courseLoading, course} = this.props

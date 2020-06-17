@@ -1,13 +1,12 @@
 import userActionTypes from './user.type';
-import userData from '../../userData.json';
 
 const INITIAL_STATE = {
-  currentUser: userData.userData,
-  token: null,
+  currentUser: null,
   signUpError: '',
   signInError: '',
   profileHidden: true,
-  myCourses: null
+  myCourses: null,
+  credentialsModalHidden: true,
 };
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -15,8 +14,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case userActionTypes.SIGN_UP_USER_SUCCESS:
       return {
         ...state,
-        currentUser: action.payload.user,
-        token: action.payload.token
+        currentUser: action.payload,
       };
     case userActionTypes.SIGN_IN_USER_FAILURE:
       return {
@@ -29,6 +27,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         signUpError: action.payload
       };
     case userActionTypes.SIGN_OUT_USER:
+      localStorage.removeItem('token')
       return {
         ...state,
         currentUser: null
@@ -45,6 +44,16 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         myCourses: action.payload
       };
+    case userActionTypes.SHOW_CREDENTIALS_MODAL:
+      return {
+        ...state,
+        credentialsModalHidden: false
+      }
+    case userActionTypes.HIDE_CREDENTIALS_MODAL:
+      return {
+        ...state,
+        credentialsModalHidden: true
+      }
     default:
       return state;
   }
